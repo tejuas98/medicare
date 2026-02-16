@@ -283,13 +283,7 @@ export default function Navbar() {
                                     </div>
                                 </div>
 
-                                {/* Returns & Orders - Hide for Admin */}
-                                {user?.role !== 'admin' && (
-                                    <div className="hidden md:flex flex-col items-start leading-tight cursor-pointer px-3 py-1.5 hover:bg-gray-100 rounded-lg transition-colors">
-                                        <span className="text-[10px] text-gray-500 font-medium uppercase tracking-wide">Returns</span>
-                                        <span className="font-bold text-xs text-gray-900">& Orders</span>
-                                    </div>
-                                )}
+
 
                                 {/* Admin Dashboard Link or Cart */}
                                 {user?.role === 'admin' ? (

@@ -3,9 +3,13 @@ import { X, ShoppingCart, Star, CheckCircle, AlertCircle, MessageSquare, Send } 
 import { useShop } from '../context/ShopContext';
 import { useAuth } from '../context/AuthContext';
 
-const ProductDetailsModal = ({ product, onClose }) => {
-    const { addToCart, addReview } = useShop(); // Ensure addReview is imported
+const ProductDetailsModal = ({ product: initialProduct, onClose }) => {
+    const { products, addToCart, addReview } = useShop(); // Ensure addReview is imported
     const { user } = useAuth();
+
+    // Get live product data from context to ensure updates (like new reviews) are reflected immediately
+    const product = products.find(p => p.id === initialProduct.id) || initialProduct;
+
     const [isAdded, setIsAdded] = useState(false);
     const [quantity, setQuantity] = useState(1);
 
@@ -131,11 +135,28 @@ const ProductDetailsModal = ({ product, onClose }) => {
                                         <p className="font-medium text-gray-700">{product.usage || "General Health"}</p>
                                     </div>
                                 </div>
-                                <div className="prose prose-sm text-gray-600">
+                                <div className="prose prose-sm text-gray-600 mb-6">
                                     <h4 className="font-bold text-gray-900 mb-2">About this Item</h4>
                                     <p>
                                         {product.details || "This is a high-quality healthcare product sourced directly from authorized manufacturers. It is stored under optimal conditions to ensure maximum efficacy."}
                                     </p>
+                                </div>
+
+                                {/* Write a Review Shortcut */}
+                                <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-4 flex items-center justify-between">
+                                    <div>
+                                        <p className="text-sm font-bold text-gray-900">Have you used this product?</p>
+                                        <p className="text-xs text-gray-500">Share your experience with others.</p>
+                                    </div>
+                                    <button
+                                        onClick={() => {
+                                            setActiveTab('Reviews');
+                                            setShowReviewForm(true);
+                                        }}
+                                        className="text-xs font-bold bg-white text-emerald-600 border border-emerald-200 px-3 py-2 rounded-lg hover:bg-emerald-600 hover:text-white transition-colors"
+                                    >
+                                        Write a Review
+                                    </button>
                                 </div>
                             </div>
                         )}

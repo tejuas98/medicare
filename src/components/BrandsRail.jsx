@@ -2,16 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const brands = [
-    { name: "Himalaya", logo: "https://logo.clearbit.com/himalayawellness.in" },
-    { name: "Dabur", logo: "https://logo.clearbit.com/dabur.com" },
-    { name: "Cipla", logo: "https://logo.clearbit.com/cipla.com" },
-    { name: "Sun Pharma", logo: "https://logo.clearbit.com/sunpharma.com" },
-    { name: "Patanjali", logo: "https://logo.clearbit.com/patanjaliayurved.net" },
-    { name: "zandu", logo: "https://logo.clearbit.com/zanducare.com" },
-    { name: "Nestle", logo: "https://logo.clearbit.com/nestle.in" },
-    { name: "Tata 1mg", logo: "https://logo.clearbit.com/1mg.com" },
-    { name: "Apollo", logo: "https://logo.clearbit.com/apollo247.com" },
-    { name: "Dr. Morepen", logo: "https://logo.clearbit.com/morepen.com" }
+    { name: "Patanjali", logo: "https://icon.horse/icon/patanjaliayurved.net" },
+    { name: "Zandu", logo: "https://icon.horse/icon/zanducare.com" },
+    { name: "Nestle", logo: "https://icon.horse/icon/nestle.in" },
+    { name: "Tata 1mg", logo: "https://icon.horse/icon/1mg.com" },
+    { name: "Apollo Hospitals", logo: "https://icon.horse/icon/apollohospitals.com" },
+    { name: "Himalaya", logo: "https://icon.horse/icon/himalayawellness.in" },
+    { name: "Dabur", logo: "https://icon.horse/icon/dabur.com" },
+    { name: "Cipla", logo: "https://icon.horse/icon/cipla.com" },
+    { name: "Sun Pharma", logo: "https://icon.horse/icon/sunpharma.com" },
+    { name: "Dr. Morepen", logo: "https://icon.horse/icon/morepen.com" }
 ];
 
 export default function BrandsRail() {
@@ -35,7 +35,7 @@ export default function BrandsRail() {
                     }}
                 >
                     {[...brands, ...brands].map((brand, idx) => (
-                        <div key={idx} className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                        <div key={idx} className="flex-shrink-0 transition-all duration-500">
                             <img
                                 src={brand.logo}
                                 alt={brand.name}

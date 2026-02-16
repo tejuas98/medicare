@@ -1,0 +1,48 @@
+erDiagram
+    direction LR
+
+    USER ||--o{ ORDER : places
+    USER {
+        int id PK
+        string email
+        string password
+        string role
+    }
+
+    ORDER ||--|{ ORDER_ITEM : contains
+    ORDER {
+        string id PK
+        int user_id FK
+        float total
+        string status
+        date order_date
+    }
+
+    PRODUCT {
+        int id PK
+        string name
+        float price
+        int stock
+        string category
+    }
+
+    ORDER_ITEM {
+        string order_id FK
+        int product_id FK
+        int quantity
+        float price
+    }
+
+    PRODUCT ||--o{ ORDER_ITEM : "included in"
+
+    USER ||--o{ REVIEW : writes
+    PRODUCT ||--o{ REVIEW : has
+
+    REVIEW {
+        int id PK
+        int user_id FK
+        int product_id FK
+        int rating
+        string comment
+        date date
+    }

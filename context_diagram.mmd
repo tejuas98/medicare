@@ -1,0 +1,9 @@
+flowchart TB
+    User[User]
+    System[Medicare System]
+    Admin[Admin]
+
+    User -- "Orders/Requests" --> System
+    System -- "Order Status/Products" --> User
+    System -- "Reports/Data" --> Admin
+    Admin -- "Management/Updates" --> System

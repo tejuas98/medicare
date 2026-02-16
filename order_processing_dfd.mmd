@@ -1,0 +1,18 @@
+flowchart TB
+    User[User]
+    Cart[Cart Management]
+    Checkout[Checkout Process]
+    Validate{Validate Details}
+    OrderGen[Order Generation]
+    OrderDB[(Order DB)]
+    ProductDB[(Product DB)]
+    AdminDash[Admin Dashboard]
+
+    User -->|1. Select Items| Cart
+    Cart -->|2. Review Cart| Checkout
+    Checkout -->|3. Enter Address| Validate
+    Validate -->|Invalid| Checkout
+    Validate -->|Valid| OrderGen
+    OrderGen -->|4. Save Order| OrderDB
+    OrderGen -->|5. Update Stock| ProductDB
+    OrderGen -->|6. Notify Admin| AdminDash

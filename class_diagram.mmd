@@ -1,0 +1,44 @@
+classDiagram
+    direction LR
+
+    class User {
+        +int id
+        +string username
+        +string email
+        +string password
+        +string role
+        +login()
+        +register()
+    }
+
+    class Order {
+        +string id
+        +int userid
+        +date date
+        +float total
+        +string status
+        +updateStatus()
+    }
+
+    class Cart {
+        +int userid
+        +List~Product~ items
+        +addItem()
+        +removeItem()
+        +checkout()
+    }
+
+    class Product {
+        +int id
+        +string name
+        +float price
+        +string category
+        +string description
+        +int stock
+        +updateStock()
+    }
+
+    User "1" --> "*" Order : places
+    User "1" --> "1" Cart : has
+    Order "1" --> "*" Product : contains
+    Cart "1" --> "*" Product : contains

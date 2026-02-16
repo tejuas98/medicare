@@ -8,7 +8,7 @@ export const useShop = () => useContext(ShopContext);
 export const ShopProvider = ({ children }) => {
     // 1. Initialize State with Lazy Loading from LocalStorage (Robust Persistence)
     const [products, setProducts] = useState(() => {
-        const stored = localStorage.getItem('mediCareProducts');
+        const stored = localStorage.getItem('mediCareProducts_v2');
         let initialProducts = stored ? JSON.parse(stored) : MOCK_PRODUCTS;
 
         // Ensure all products have a 'stock' property (migration for existing data)
@@ -22,22 +22,22 @@ export const ShopProvider = ({ children }) => {
 
     // Lazy init for cart to prevent empty flash
     const [cart, setCart] = useState(() => {
-        const stored = localStorage.getItem('mediCareCart');
+        const stored = localStorage.getItem('mediCareCart_v2');
         return stored ? JSON.parse(stored) : [];
     });
 
     const [wishlist, setWishlist] = useState(() => {
-        const stored = localStorage.getItem('mediCareWishlist');
+        const stored = localStorage.getItem('mediCareWishlist_v2');
         return stored ? JSON.parse(stored) : [];
     });
 
     const [orders, setOrders] = useState(() => {
-        const stored = localStorage.getItem('mediCareOrders');
+        const stored = localStorage.getItem('mediCareOrders_v2');
         return stored ? JSON.parse(stored) : [];
     });
 
     const [prescriptions, setPrescriptions] = useState(() => {
-        const stored = localStorage.getItem('mediCarePrescriptions');
+        const stored = localStorage.getItem('mediCarePrescriptions_v2');
         return stored ? JSON.parse(stored) : [];
     });
 
@@ -48,23 +48,23 @@ export const ShopProvider = ({ children }) => {
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('mediCareProducts', JSON.stringify(products));
+        localStorage.setItem('mediCareProducts_v2', JSON.stringify(products));
     }, [products]);
 
     useEffect(() => {
-        localStorage.setItem('mediCareCart', JSON.stringify(cart));
+        localStorage.setItem('mediCareCart_v2', JSON.stringify(cart));
     }, [cart]);
 
     useEffect(() => {
-        localStorage.setItem('mediCareWishlist', JSON.stringify(wishlist));
+        localStorage.setItem('mediCareWishlist_v2', JSON.stringify(wishlist));
     }, [wishlist]);
 
     useEffect(() => {
-        localStorage.setItem('mediCareOrders', JSON.stringify(orders));
+        localStorage.setItem('mediCareOrders_v2', JSON.stringify(orders));
     }, [orders]);
 
     useEffect(() => {
-        localStorage.setItem('mediCarePrescriptions', JSON.stringify(prescriptions));
+        localStorage.setItem('mediCarePrescriptions_v2', JSON.stringify(prescriptions));
     }, [prescriptions]);
 
 
